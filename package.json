@@ -1,0 +1,39 @@
+{
+  "name": "context-guardian",
+  "version": "0.0.1",
+  "description": "Focuses on the role of protecting the security context.",
+  "keywords": [
+    "pepr",
+    "k8s",
+    "policy-engine",
+    "pepr-module",
+    "security"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "pepr": {
+    "uuid": "3ac61b16-3bab-5a37-bbe9-f18335374d12",
+    "onError": "reject",
+    "webhookTimeout": 10,
+    "customLabels": {
+      "namespace": {
+        "pepr.dev": ""
+      }
+    },
+    "alwaysIgnore": {
+      "namespaces": []
+    },
+    "includedFiles": [],
+    "env": {}
+  },
+  "scripts": {
+    "k3d-setup": "k3d cluster delete pepr-dev && k3d cluster create pepr-dev --k3s-arg '--debug@server:0' --wait && kubectl rollout status deployment -n kube-system"
+  },
+  "dependencies": {
+    "pepr": "0.32.0"
+  },
+  "devDependencies": {
+    "typescript": "5.3.3"
+  }
+}
